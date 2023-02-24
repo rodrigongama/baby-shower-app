@@ -13,17 +13,18 @@ export const Container = styled.div`
   }
 
   > div {
+    max-width: 100%;
     width: 832px;
   }
 `
 export const Title = styled.p`
   color: ${({ theme }) => theme.colorPrimary};
-  font: normal normal 700 17px 'Montserrat';
+  font: normal normal 700 1.7rem 'Montserrat';
 `
 
 export const Link = styled(BaseLink)`
   color: #ac897e;
-  font: normal normal 600 15px 'Montserrat';
+  font: normal normal 600 1.5rem 'Montserrat';
   margin-top: 40px;
 
   &:hover {

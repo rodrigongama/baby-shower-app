@@ -1,24 +1,15 @@
 import { Carousel } from 'antd'
-import { giftList } from '../../../enums'
-import { ShoppingCard } from '../../../components'
+import { carouselProps, giftList } from '../../../enums'
+import { ShoppingCard } from '../..'
 
 import { Container, Link, Title } from './style'
 
-const props = {
-  dots: false,
-  infinite: true,
-  autoplay: true,
-  speed: 600,
-  slidesToShow: 2,
-  slidesToScroll: 1,
-}
-
-export function CarouselHome() {
+export function CarouselGifts() {
   return (
     <Container>
       <Title>Lista de presentes</Title>
 
-      <Carousel {...props}>
+      <Carousel {...carouselProps}>
         {giftList
           .filter((item) => item.showInCarousel)
           .map((gift) => (
@@ -26,7 +17,7 @@ export function CarouselHome() {
           ))}
       </Carousel>
 
-      <Link to='/gift-list'>Ver toda a lista de presente</Link>
+      <Link to='/gift-list'>Ver toda a lista de presentes</Link>
     </Container>
   )
 }
