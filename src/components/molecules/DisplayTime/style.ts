@@ -7,10 +7,10 @@ export const Container = styled.div`
 
 export const Title = styled.p`
   color: #584540;
-  font: normal normal 400 18px 'Montserrat';
+  font: normal normal 400 1.8rem 'Montserrat';
 `
 
 export const Time = styled.p`
   color: #584540;
-  font: normal normal 700 24px 'Montserrat';
+  font: normal normal 700 2.4rem 'Montserrat';
 `

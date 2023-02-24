@@ -5,7 +5,7 @@ export const TotalPriceContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font: normal normal 800 16px 'Open Sans';
+  font: normal normal 800 1.6rem 'Open Sans';
   margin-top: 24px;
   padding: 24px 12px 0;
 `

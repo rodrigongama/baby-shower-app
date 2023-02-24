@@ -17,7 +17,7 @@ export const Modal = styled(BaseModal)`
 
     .ant-modal-title {
       color: #fff3e2;
-      font: normal normal 700 18px 'Open Sans';
+      font: normal normal 700 1.8rem 'Open Sans';
       letter-spacing: 1px;
     }
   }
@@ -61,7 +61,7 @@ export const Quantity = styled.div`
 
   span {
     color: #584540;
-    font-size: 16px;
+    font-size: 1.6rem;
     padding: 0 5px;
   }
 
@@ -88,7 +88,7 @@ export const PixContainer = styled.div`
 
 export const PixTitle = styled.p`
   color: #ac897e;
-  font: normal normal 800 20px 'Open Sans';
+  font: normal normal 800 2rem 'Open Sans';
   text-transform: uppercase;
 `
 
@@ -102,7 +102,7 @@ export const PixSubtitle = styled.p`
   }
 
   span {
-    font: normal normal 400 28px 'Open Sans';
+    font: normal normal 400 2.8rem 'Open Sans';
   }
 `
 
@@ -115,7 +115,7 @@ export const PixContent = styled.div`
 `
 
 export const Instruction = styled.p`
-  font: normal normal 400 15px 'Open Sans';
+  font: normal normal 400 1.5rem 'Open Sans';
   margin: 15px 0;
   text-align: center;
   text-transform: uppercase;

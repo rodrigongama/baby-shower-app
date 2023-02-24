@@ -1,10 +1,17 @@
-import { shower } from '../../../assets'
+import { useWindowSize } from '../../../hooks'
+import { shower, showerMobile } from '../../../assets'
+
 import { Container, Text, WelcomeText } from './style'
 
 export function Welcome() {
+  const { width } = useWindowSize()
+
   return (
     <Container>
-      <img src={shower} alt='Imagem do Chá' />
+      <img
+        src={width && width < 768 ? showerMobile : shower}
+        alt='Imagem do Chá'
+      />
 
       <WelcomeText>
         <p>Olá, familiares e amigos!</p>

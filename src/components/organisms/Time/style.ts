@@ -6,4 +6,9 @@ export const Container = styled.div`
   align-items: center;
   margin: 70px auto;
   max-width: 920px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: 220px;
+  }
 `

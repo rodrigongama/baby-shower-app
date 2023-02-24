@@ -3,7 +3,7 @@ import { Button } from 'antd'
 import { ButtonProps } from './types'
 
 export const BaseButton = styled(Button)<ButtonProps>`
-  font: normal normal 400 13px/18px 'Open Sans';
+  font: normal normal 400 1.3rem 'Open Sans';
   letter-spacing: 1px;
   text-transform: uppercase;
   width: 100%;

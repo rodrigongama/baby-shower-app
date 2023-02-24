@@ -12,7 +12,7 @@ export const BaseBreadcrumb = styled(Breadcrumb)`
 export const PrimaryItem = styled(Breadcrumb.Item)`
   a {
     color: ${({ theme }) => theme.colorSecondary};
-    font: normal normal 700 16px 'Open Sans';
+    font: normal normal 700 1.6rem 'Open Sans';
 
     &:hover {
       background: none;
@@ -24,5 +24,5 @@ export const PrimaryItem = styled(Breadcrumb.Item)`
 
 export const SecondaryItem = styled(Breadcrumb.Item)`
   color: #584540;
-  font: normal normal 300 16px 'Open Sans';
+  font: normal normal 300 1.6rem 'Open Sans';
 `

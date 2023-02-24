@@ -27,11 +27,11 @@ export const GiftInformation = styled.div`
 export const Title = styled.p`
   color: ${({ theme }) => theme.colorSecondary};
   font-weight: 700;
-  font-size: 14px;
+  font-size: 1.4rem;
 `
 
 export const Price = styled.p`
   color: ${({ theme }) => theme.colorPrimary};
   font-weight: 700;
-  font-size: 14px;
+  font-size: 1.4rem;
 `
