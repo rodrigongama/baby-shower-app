@@ -1,17 +1,41 @@
 import styled from 'styled-components'
 import { Menu as BaseMenu } from 'antd'
 
-export const Container = styled.header`
+export const Container = styled.div`
   background: ${({ theme }) => theme.colorTerciary};
+  height: ${({ theme }) => theme.headerHeight};
   padding: 0 15px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9;
 `
 
-export const Content = styled.div`
+export const ContainerMenuMobile = styled(Container)`
+  padding: 0 5px;
+  top: auto;
+  bottom: 0;
+`
+
+export const Content = styled.header`
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+  height: 100%;
   margin: 0 auto;
   max-width: 1265px;
+
+  > a {
+    height: 70px;
+  }
+
+  @media (max-width: 999px) {
+    justify-content: center;
+  }
+`
+
+export const Logo = styled.img`
+  height: 70px;
 `
 
 export const Menu = styled(BaseMenu)`
@@ -22,7 +46,7 @@ export const Menu = styled(BaseMenu)`
 
   li {
     color: #584540;
-    font: normal normal 400 16px/25px 'Open Sans';
+    font: normal normal 400 1.6rem 'Open Sans';
     padding-bottom: 25px;
 
     &.ant-menu-item-selected {
@@ -36,6 +60,58 @@ export const Menu = styled(BaseMenu)`
     &.ant-menu-item-active::after {
       border-bottom-color: ${({ theme }) => theme.colorPrimary} !important;
       border-bottom-width: 5px !important;
+    }
+
+    @media (min-width: 999px) {
+      svg {
+        display: none !important;
+      }
+    }
+  }
+
+  @media (max-width: 999px) {
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding-left: 0;
+
+    li {
+      &.ant-menu-overflow-item.ant-menu-item {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center;
+        align-items: center;
+        flex-basis: 25% !important;
+        font-size: 1rem;
+        width: 60px !important;
+        padding: 0;
+
+        svg {
+          margin-bottom: 5px;
+        }
+
+        span {
+          line-height: 13px;
+          margin: 0 !important;
+          text-align: center;
+
+          a {
+            white-space: break-spaces;
+          }
+        }
+      }
+
+      &.ant-menu-item-selected {
+        span {
+          color: ${({ theme }) => theme.colorPrimary};
+          font-weight: 700;
+        }
+      }
+
+      &.ant-menu-item-selected::after,
+      &.ant-menu-item-active::after {
+        border: none !important;
+      }
     }
   }
 `
