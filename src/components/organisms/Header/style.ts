@@ -70,9 +70,6 @@ export const Menu = styled(BaseMenu)`
   }
 
   @media (max-width: 999px) {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     height: 100%;
     padding-left: 0;
 
