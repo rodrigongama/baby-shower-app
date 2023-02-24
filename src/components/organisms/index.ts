@@ -1,4 +1,5 @@
-export * from './CarouselHome'
+export * from './CarouselGifts'
+export * from './MessageSection'
 export * from './Header'
 export * from './Information'
 export * from './LayoutPage'

@@ -5,9 +5,9 @@ import { ConfigProvider } from 'antd'
 import theme from './styles/theme'
 import GlobalStyle from './styles/global'
 
-import { GiftList, Home } from './pages'
+import { GiftList, Home, Messages } from './pages'
 import { Header, ModalCheckout } from './components'
-import { CartProvider, NotificationProvider } from './contexts'
+import { CartProvider, MessageProvider, NotificationProvider } from './contexts'
 
 import '@fontsource/open-sans'
 import '@fontsource/montserrat'
@@ -18,17 +18,20 @@ export default function App() {
       <ConfigProvider theme={{ token: theme }}>
         <NotificationProvider>
           <CartProvider>
-            <BrowserRouter>
-              <Header />
-              <ModalCheckout />
+            <MessageProvider>
+              <BrowserRouter>
+                <Header />
+                <ModalCheckout />
 
-              <Routes>
-                <Route path='/' element={<Home />} index />
-                <Route path='/gift-list' element={<GiftList />} />
-              </Routes>
-            </BrowserRouter>
+                <Routes>
+                  <Route path='/' element={<Home />} index />
+                  <Route path='/messages' element={<Messages />} index />
+                  <Route path='/gift-list' element={<GiftList />} />
+                </Routes>
+              </BrowserRouter>
 
-            <GlobalStyle />
+              <GlobalStyle />
+            </MessageProvider>
           </CartProvider>
         </NotificationProvider>
       </ConfigProvider>

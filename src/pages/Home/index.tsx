@@ -1,5 +1,12 @@
 import { useNotification } from '../../contexts'
-import { CarouselHome, Information, Time, Welcome } from '../../components'
+import {
+  CarouselGifts,
+  Information,
+  MessageSection,
+  Time,
+  Welcome,
+} from '../../components'
+
 import { Container } from './style'
 
 export function Home() {
@@ -11,7 +18,8 @@ export function Home() {
 
       <Welcome />
       <Time />
-      <CarouselHome />
+      <CarouselGifts />
+      <MessageSection />
       <Information />
     </Container>
   )
