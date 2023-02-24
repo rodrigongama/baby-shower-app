@@ -7,6 +7,10 @@ export const Container = styled.div`
   justify-content: space-between;
   margin: 100px auto 40px;
   max-width: 950px;
+
+  .base-card {
+    padding: 16px;
+  }
 `
 
 export const DateContainer = styled.div`
@@ -17,7 +21,7 @@ export const DateContainer = styled.div`
 
 export const Title = styled.h2`
   color: #ac897e;
-  font: normal normal 700 18px 'Montserrat';
+  font: normal normal 700 1.8rem 'Montserrat';
   text-align: center;
 `
 
@@ -31,7 +35,7 @@ export const TimeDisplay = styled.div`
   padding: 20px 0;
 
   p {
-    font: normal normal 400 18px 'Montserrat';
+    font: normal normal 400 1.8rem 'Montserrat';
   }
 `
 
@@ -39,7 +43,7 @@ export const TimeContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font: normal normal 700 24px 'Montserrat';
+  font: normal normal 700 2.4rem 'Montserrat';
   width: 100%;
 `
 
@@ -68,6 +72,8 @@ export const AddresContainer = styled.div`
 
   iframe {
     border: none;
+    height: 300px;
+    width: 100%;
   }
 `
 
@@ -84,6 +90,6 @@ export const Address = styled.address`
 
   p {
     color: ${({ theme }) => theme.colorSecondary};
-    font: normal normal 400 18px 'Montserrat';
+    font: normal normal 400 1.8rem 'Montserrat';
   }
 `
