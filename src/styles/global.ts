@@ -10,6 +10,7 @@ export default createGlobalStyle`
 html,
 body {
     font-family: 'Open Sans', sans-serif;
+    font-size: 62.5%; /* 62.5% of 16px = 10px */
     margin: 0;
     overflow-y: auto;
     padding: 0;
@@ -21,4 +22,11 @@ button,
 a {
     cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  html {
+    font-size: 50%;
+  }
+}
+
 `
