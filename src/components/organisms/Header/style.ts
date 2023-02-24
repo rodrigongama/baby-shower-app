@@ -70,6 +70,7 @@ export const Menu = styled(BaseMenu)`
   }
 
   @media (max-width: 999px) {
+    display: flex;
     align-items: center;
     justify-content: space-between;
     height: 100%;
@@ -77,13 +78,12 @@ export const Menu = styled(BaseMenu)`
 
     li {
       &.ant-menu-overflow-item.ant-menu-item {
-        display: flex !important;
-        flex-direction: column !important;
+        display: flex;
+        flex-basis: 25%;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        flex-basis: 25% !important;
         font-size: 1rem;
-        width: 60px !important;
         padding: 0;
 
         svg {
@@ -96,7 +96,7 @@ export const Menu = styled(BaseMenu)`
           text-align: center;
 
           a {
-            white-space: break-spaces;
+            white-space: pre-wrap;
           }
         }
       }
