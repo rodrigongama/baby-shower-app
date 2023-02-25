@@ -59,8 +59,46 @@ export const TimeContent = styled.div`
 export const ContentCard = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 20px;
   width: 100%;
+
+  p {
+    color: ${({ theme }) => theme.colorSecondary};
+    font: normal normal 400 1.8rem 'Montserrat';
+  }
+
+  @media (max-width: 999px) {
+    flex-direction: column;
+  }
+`
+
+export const ConfirmationContainer = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  height: 320px;
+  max-width: 100%;
+  width: 415px;
+`
+
+export const ButtonsConfirmationContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+  margin-top: 20px;
+
+  button {
+    border-radius: 16px;
+    justify-content: flex-start;
+    text-transform: lowercase;
+
+    span {
+      flex: 1;
+    }
+  }
 `
 
 export const AddresContainer = styled.div`
@@ -68,6 +106,7 @@ export const AddresContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex: 1;
   padding: 15px 0;
 
   iframe {
@@ -78,18 +117,15 @@ export const AddresContainer = styled.div`
 `
 
 export const Address = styled.address`
+  color: ${({ theme }) => theme.colorSecondary};
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  font-size: 1.8rem;
   margin-bottom: 10px;
   text-align: center;
 
-  img {
+  svg {
     margin-right: 5px;
-  }
-
-  p {
-    color: ${({ theme }) => theme.colorSecondary};
-    font: normal normal 400 1.8rem 'Montserrat';
   }
 `
