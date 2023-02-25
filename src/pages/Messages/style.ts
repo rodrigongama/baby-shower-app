@@ -5,6 +5,11 @@ export const Container = styled.div`
   max-width: 870px;
 `
 
+export const EmptyMessagesText = styled.p`
+  font-size: 2rem;
+  text-align: center;
+`
+
 export const Grid = styled.div`
   display: grid;
   gap: 30px 60px;

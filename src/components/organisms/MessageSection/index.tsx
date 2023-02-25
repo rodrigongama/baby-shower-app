@@ -68,14 +68,19 @@ export function MessageSection() {
       </Styles.InsertMessageContainer>
 
       <Styles.CardsContainer>
-        <Carousel {...carouselProps}>
+        <Carousel
+          {...carouselProps}
+          slidesToShow={messages.length === 1 ? 1 : 2}
+        >
           {messages.map((message) => (
             <MessageCard key={message.id} message={message} />
           ))}
         </Carousel>
       </Styles.CardsContainer>
 
-      <Styles.Link to='/messages'>Ver todas as mensagens</Styles.Link>
+      {messages.length > 0 && (
+        <Styles.Link to='/messages'>Ver todas as mensagens</Styles.Link>
+      )}
     </Styles.Container>
   )
 }
