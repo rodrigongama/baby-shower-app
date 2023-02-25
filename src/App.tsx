@@ -5,7 +5,7 @@ import { ConfigProvider } from 'antd'
 import theme from './styles/theme'
 import GlobalStyle from './styles/global'
 
-import { GiftList, Home, Messages } from './pages'
+import { Confirmation, GiftList, Home, Messages } from './pages'
 import { Header, ModalCheckout } from './components'
 import { CartProvider, MessageProvider, NotificationProvider } from './contexts'
 
@@ -25,8 +25,9 @@ export default function App() {
 
                 <Routes>
                   <Route path='/' element={<Home />} index />
-                  <Route path='/messages' element={<Messages />} index />
+                  <Route path='/messages' element={<Messages />} />
                   <Route path='/gift-list' element={<GiftList />} />
+                  <Route path='/confirmation' element={<Confirmation />} />
                 </Routes>
               </BrowserRouter>
 
