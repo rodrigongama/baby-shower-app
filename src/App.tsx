@@ -7,7 +7,12 @@ import GlobalStyle from './styles/global'
 
 import { Confirmation, GiftList, Home, Messages } from './pages'
 import { Header, ModalCheckout } from './components'
-import { CartProvider, MessageProvider, NotificationProvider } from './contexts'
+import {
+  CartProvider,
+  GiftListProvider,
+  MessageProvider,
+  NotificationProvider,
+} from './contexts'
 
 import '@fontsource/open-sans'
 import '@fontsource/montserrat'
@@ -17,23 +22,25 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <ConfigProvider theme={{ token: theme }}>
         <NotificationProvider>
-          <CartProvider>
-            <MessageProvider>
-              <BrowserRouter>
-                <Header />
-                <ModalCheckout />
+          <GiftListProvider>
+            <CartProvider>
+              <MessageProvider>
+                <BrowserRouter>
+                  <Header />
+                  <ModalCheckout />
 
-                <Routes>
-                  <Route path='/' element={<Home />} index />
-                  <Route path='/messages' element={<Messages />} />
-                  <Route path='/gift-list' element={<GiftList />} />
-                  <Route path='/confirmation' element={<Confirmation />} />
-                </Routes>
-              </BrowserRouter>
+                  <Routes>
+                    <Route path='/' element={<Home />} index />
+                    <Route path='/messages' element={<Messages />} />
+                    <Route path='/gift-list' element={<GiftList />} />
+                    <Route path='/confirmation' element={<Confirmation />} />
+                  </Routes>
+                </BrowserRouter>
 
-              <GlobalStyle />
-            </MessageProvider>
-          </CartProvider>
+                <GlobalStyle />
+              </MessageProvider>
+            </CartProvider>
+          </GiftListProvider>
         </NotificationProvider>
       </ConfigProvider>
     </ThemeProvider>

@@ -1,6 +1,5 @@
-import { useNotification } from '../../contexts'
+import { useGiftList, useNotification } from '../../contexts'
 import { LayoutPage, ShoppingCard } from '../../components'
-import { giftList } from '../../enums'
 
 import { Container, Grid } from './style'
 
@@ -8,6 +7,7 @@ const pageTitle = 'Lista de Presentes'
 
 export function GiftList() {
   const { contextNotification } = useNotification()
+  const { giftList } = useGiftList()
 
   return (
     <LayoutPage page={pageTitle}>
@@ -15,11 +15,9 @@ export function GiftList() {
         {contextNotification}
 
         <Grid>
-          {giftList
-            .filter((item) => item.showInCarousel)
-            .map((gift) => (
-              <ShoppingCard item={gift} key={gift.id} />
-            ))}
+          {giftList.map((gift) => (
+            <ShoppingCard item={gift} key={gift.image} />
+          ))}
         </Grid>
       </Container>
     </LayoutPage>

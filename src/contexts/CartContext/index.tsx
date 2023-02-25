@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from 'react'
 import { useNotification } from '../../contexts/NotificationContext'
+import { GiftList } from '../../contexts/GiftListContext/types'
 import { CartContextData, CartItem, CartProviderProps } from './types'
 
 const CartContext = createContext({} as CartContextData)
@@ -13,7 +14,7 @@ export function CartProvider({ children }: CartProviderProps) {
   const handleOpenCheckoutModal = () => setIsCheckoutModal(true)
   const handleCloseCheckoutModal = () => setIsCheckoutModal(false)
 
-  function addItemOnCart(item: CartItem, quantity: number) {
+  function addItemOnCart(item: GiftList, quantity: number) {
     const isProductInCart = shoppingCart.some(({ id }) => id === item.id)
 
     if (isProductInCart) {
@@ -37,7 +38,7 @@ export function CartProvider({ children }: CartProviderProps) {
     )
   }
 
-  function removeItemOnCart(id: number) {
+  function removeItemOnCart(id: string) {
     setShoppingCart((prevState) => prevState.filter((item) => item.id !== id))
   }
 

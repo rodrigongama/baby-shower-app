@@ -1,5 +1,5 @@
-import { CartItem } from '../../../../contexts/CartContext/types'
+import { GiftList } from '../../../../contexts/GiftListContext/types'
 
 export interface ShoppingCardProps {
-  item: CartItem
+  item: GiftList
 }
