@@ -19,7 +19,7 @@ export function Header() {
   const items: MenuProps['items'] = [
     {
       label: <Link to='/'>Apresentação</Link>,
-      icon: <Icons.AiOutlineUser />,
+      icon: <Icons.AiOutlineUser size='2rem' />,
       key: '/',
     },
     {
@@ -28,12 +28,12 @@ export function Header() {
           {isHeaderMobile ? 'Presentes' : 'Lista de presentes'}
         </Link>
       ),
-      icon: <Icons.AiOutlineBook />,
+      icon: <Icons.AiOutlineBook size='2rem' />,
       key: '/gift-list',
     },
     {
       label: <Link to='/messages'>Mensagens</Link>,
-      icon: <Icons.AiOutlineMessage />,
+      icon: <Icons.AiOutlineMessage size='2rem' />,
       key: '/messages',
     },
     {
@@ -42,7 +42,7 @@ export function Header() {
           {isHeaderMobile ? 'Presença' : 'Confirmação de Presença'}
         </Link>
       ),
-      icon: <Icons.AiOutlineCalendar />,
+      icon: <Icons.AiOutlineCalendar size='2rem' />,
       key: '/confirmation',
     },
   ]

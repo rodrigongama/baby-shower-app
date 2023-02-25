@@ -74,7 +74,7 @@ export const Menu = styled(BaseMenu)`
     padding-left: 0;
 
     li {
-      &.ant-menu-overflow-item.ant-menu-item {
+      &.ant-menu-item {
         display: flex;
         flex-basis: 25%;
         flex-direction: column;
@@ -91,6 +91,18 @@ export const Menu = styled(BaseMenu)`
           line-height: 13px;
           margin: 0 !important;
           text-align: center;
+
+          a {
+            font-size: 1.2rem;
+          }
+        }
+
+        &:nth-child(2) {
+          padding-right: 15px;
+        }
+
+        &:nth-child(3) {
+          padding-left: 15px;
         }
       }
 
