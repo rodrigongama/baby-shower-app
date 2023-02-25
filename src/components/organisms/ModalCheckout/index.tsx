@@ -5,7 +5,7 @@ import { MdOutlineContentCopy } from 'react-icons/md'
 import { FooterCheckout, TotalPrice } from '../../../components'
 import PIX from 'react-qrcode-pix'
 
-import { useCart } from '../../../contexts'
+import { useCart, useNotification } from '../../../contexts'
 import { formatPrice } from '../../../utils'
 import { pix } from '../../../assets'
 
@@ -23,6 +23,8 @@ export function ModalCheckout() {
     handleCloseCheckoutModal,
     removeItemOnCart,
   } = useCart()
+  const { contextMessage, openMessage, contextNotification, openNotification } =
+    useNotification()
 
   const [step, setStep] = useState(1)
   const [fullPIX, setFullPIX] = useState('')
@@ -33,6 +35,11 @@ export function ModalCheckout() {
     0,
   )
 
+  function handleCopyPixCode(pix: string) {
+    navigator.clipboard.writeText(pix)
+    openMessage('success', 'Código copiado com sucesso')
+  }
+
   function handleSubmitCart() {
     if (step === 1) {
       setStep(2)
@@ -40,6 +47,10 @@ export function ModalCheckout() {
     }
 
     handlResetCheckout()
+    openNotification(
+      'Compra efetuada com sucesso',
+      'Muito obrigado pelo presente!',
+    )
   }
 
   function handlResetCheckout() {
@@ -49,108 +60,113 @@ export function ModalCheckout() {
   }
 
   return (
-    <Styles.Modal
-      title='Meu carrinho'
-      open={isCheckoutModal}
-      onCancel={handlResetCheckout}
-      width={450}
-      footer={[
-        <FooterCheckout
-          step={step}
-          isCartEmpty={isCartEmpty}
-          handleCancel={handlResetCheckout}
-          handleSubmitCart={handleSubmitCart}
-        />,
-      ]}
-    >
-      {isCartEmpty && <p>Você ainda não tem items no carrinho!</p>}
+    <>
+      {contextMessage}
+      {contextNotification}
 
-      {step === 1 && !isCartEmpty && (
-        <>
-          {shoppingCart.map((item) => (
-            <Styles.CartItem key={item.id}>
-              <img src={item.image} alt={item.name} />
+      <Styles.Modal
+        title='Meu carrinho'
+        open={isCheckoutModal}
+        onCancel={handlResetCheckout}
+        width={450}
+        footer={[
+          <FooterCheckout
+            step={step}
+            isCartEmpty={isCartEmpty}
+            handleCancel={handlResetCheckout}
+            handleSubmitCart={handleSubmitCart}
+          />,
+        ]}
+      >
+        {isCartEmpty && <p>Você ainda não tem items no carrinho!</p>}
 
-              <Styles.Description>
-                <Title>{item.name}</Title>
-                <Price>{formatPrice(item.price)}</Price>
+        {step === 1 && !isCartEmpty && (
+          <>
+            {shoppingCart.map((item) => (
+              <Styles.CartItem key={item.id}>
+                <img src={item.image} alt={item.name} />
 
-                <Styles.Quantity>
-                  <Styles.MinusIcon
-                    size={16}
-                    disabled={item.quantity === 1}
-                    onClick={() =>
-                      item.quantity === 1 ? null : addItemOnCart(item, -1)
-                    }
-                  />
+                <Styles.Description>
+                  <Title>{item.name}</Title>
+                  <Price>{formatPrice(item.price)}</Price>
 
-                  <span>{item.quantity}</span>
+                  <Styles.Quantity>
+                    <Styles.MinusIcon
+                      size={16}
+                      disabled={item.quantity === 1}
+                      onClick={() =>
+                        item.quantity === 1 ? null : addItemOnCart(item, -1)
+                      }
+                    />
 
-                  <AiOutlinePlusCircle
-                    size={16}
-                    onClick={() => addItemOnCart(item, 1)}
-                  />
-                </Styles.Quantity>
-              </Styles.Description>
+                    <span>{item.quantity}</span>
 
-              <BiTrash
-                color='#EFA389'
-                size={20}
-                onClick={() => removeItemOnCart(item.id)}
-              />
-            </Styles.CartItem>
-          ))}
+                    <AiOutlinePlusCircle
+                      size={16}
+                      onClick={() => addItemOnCart(item, 1)}
+                    />
+                  </Styles.Quantity>
+                </Styles.Description>
 
-          <TotalPrice totalPrice={totalPrice} />
-        </>
-      )}
-
-      {step === 2 && (
-        <>
-          <Styles.PixContainer>
-            <Styles.PixTitle>Pague com</Styles.PixTitle>
-
-            <Styles.PixSubtitle>
-              <img src={pix} alt='Logo PIX' />
-              <span>PIX</span>
-            </Styles.PixSubtitle>
-
-            <Styles.PixContent>
-              <PIX
-                amount={totalPrice}
-                pixkey='86b81071-df99-451c-9631-cb1b297a0b37'
-                merchant='Thamires Gama'
-                city='Rio de Janeiro'
-                cep='22780-070'
-                code={'RQP' + now}
-                onLoad={setFullPIX}
-                resize={250}
-                variant='fluid'
-                padding={30}
-                color='#ac897e'
-                bgRounded
-                divider
-              />
-
-              <Styles.Instruction>
-                Aponte sua câmera para o qr code <br /> ou use o modo pix copia
-                e cola no aplicativo do seu banco:
-              </Styles.Instruction>
-
-              <Styles.PixCode>
-                <span>Copiar código PIX</span>
-
-                <MdOutlineContentCopy
-                  size={25}
-                  onClick={() => navigator.clipboard.writeText(fullPIX)}
+                <BiTrash
+                  color='#EFA389'
+                  size={20}
+                  onClick={() => removeItemOnCart(item.id)}
                 />
-              </Styles.PixCode>
-            </Styles.PixContent>
-          </Styles.PixContainer>
+              </Styles.CartItem>
+            ))}
 
-          <TotalPrice totalPrice={totalPrice} />
-        </>
-      )}
-    </Styles.Modal>
+            <TotalPrice totalPrice={totalPrice} />
+          </>
+        )}
+
+        {step === 2 && (
+          <>
+            <Styles.PixContainer>
+              <Styles.PixTitle>Pague com</Styles.PixTitle>
+
+              <Styles.PixSubtitle>
+                <img src={pix} alt='Logo PIX' />
+                <span>PIX</span>
+              </Styles.PixSubtitle>
+
+              <Styles.PixContent>
+                <PIX
+                  amount={totalPrice}
+                  pixkey='86b81071-df99-451c-9631-cb1b297a0b37'
+                  merchant='Thamires Gama'
+                  city='Rio de Janeiro'
+                  cep='22780-070'
+                  code={'RQP' + now}
+                  onLoad={setFullPIX}
+                  resize={250}
+                  variant='fluid'
+                  padding={30}
+                  color='#ac897e'
+                  bgRounded
+                  divider
+                />
+
+                <Styles.Instruction>
+                  Aponte sua câmera para o qr code <br /> ou use o modo pix
+                  copia e cola no aplicativo do seu banco:
+                </Styles.Instruction>
+
+                <Styles.PixCode>
+                  <span>Copiar código PIX</span>
+
+                  <MdOutlineContentCopy
+                    size={25}
+                    onClick={() => handleCopyPixCode(fullPIX)}
+                  />
+                </Styles.PixCode>
+              </Styles.PixContent>
+            </Styles.PixContainer>
+
+            <TotalPrice totalPrice={totalPrice} />
+          </>
+        )}
+      </Styles.Modal>
+    </>
   )
 }
