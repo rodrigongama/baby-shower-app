@@ -83,7 +83,6 @@ export function Header() {
             selectedKeys={[current]}
             mode='horizontal'
             items={items}
-            inlineCollapsed
           />
 
           <Cart />

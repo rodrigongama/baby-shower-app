@@ -94,6 +94,10 @@ export const Menu = styled(BaseMenu)`
         }
       }
 
+      &.ant-menu-submenu {
+        display: none;
+      }
+
       &.ant-menu-item-selected {
         span {
           color: ${({ theme }) => theme.colorPrimary};
