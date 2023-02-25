@@ -8,13 +8,28 @@ export const BaseButton = styled(Button)<ButtonProps>`
   text-transform: uppercase;
   width: 100%;
 
-  &.ant-btn-link span {
+  &.ant-btn-link span,
+  &.ant-btn-default span {
     color: ${({ theme }) => theme.colorPrimary};
-    text-decoration: underline;
 
     &:hover {
       color: ${({ theme }) => theme.colorPrimary};
+    }
+  }
+
+  &.ant-btn-link span {
+    text-decoration: underline;
+
+    &:hover {
       text-decoration: none;
+    }
+  }
+
+  &.ant-btn-default {
+    border-radius: 16px;
+
+    svg {
+      color: #e88d5d;
     }
   }
 
@@ -28,6 +43,11 @@ export const BaseButton = styled(Button)<ButtonProps>`
       img {
         height: 32px;
         width: 32px;
+      }
+
+      svg {
+        font-size: 1.6rem;
+        margin-right: 5px;
       }
     `}
 
