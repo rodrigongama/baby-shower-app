@@ -11,6 +11,10 @@ export const InsertMessageContainer = styled.div`
   justify-content: center;
   align-items: center;
 
+  > img {
+    max-width: 100%;
+  }
+
   .base-card {
     height: 415px;
     max-width: 100%;
