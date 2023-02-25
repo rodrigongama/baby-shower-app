@@ -91,10 +91,6 @@ export const Menu = styled(BaseMenu)`
           line-height: 13px;
           margin: 0 !important;
           text-align: center;
-
-          a {
-            white-space: pre-wrap;
-          }
         }
       }
 

@@ -9,40 +9,49 @@ import { useWindowSize } from '../../../hooks'
 
 import { Container, ContainerMenuMobile, Content, Logo, Menu } from './style'
 
-const items: MenuProps['items'] = [
-  {
-    label: <Link to='/'>Apresentação</Link>,
-    icon: <Icons.AiOutlineUser />,
-    key: '/',
-  },
-  {
-    label: <Link to='/gift-list'>Lista de presentes</Link>,
-    icon: <Icons.AiOutlineBook />,
-    key: '/gift-list',
-  },
-  {
-    label: <Link to='/messages'>Mensagens</Link>,
-    icon: <Icons.AiOutlineMessage />,
-    key: '/messages',
-  },
-  {
-    label: <Link to='/confirmation'>Confirmação de Presença</Link>,
-    icon: <Icons.AiOutlineCalendar />,
-    key: '/confirmation',
-  },
-]
-
 export function Header() {
-  const location = useLocation()
+  const { pathname } = useLocation()
   const { width } = useWindowSize()
+  const isHeaderMobile = width && width < 999
 
   const [current, setCurrent] = useState('/')
+
+  const items: MenuProps['items'] = [
+    {
+      label: <Link to='/'>Apresentação</Link>,
+      icon: <Icons.AiOutlineUser />,
+      key: '/',
+    },
+    {
+      label: (
+        <Link to='/gift-list'>
+          {isHeaderMobile ? 'Presentes' : 'Lista de presentes'}
+        </Link>
+      ),
+      icon: <Icons.AiOutlineBook />,
+      key: '/gift-list',
+    },
+    {
+      label: <Link to='/messages'>Mensagens</Link>,
+      icon: <Icons.AiOutlineMessage />,
+      key: '/messages',
+    },
+    {
+      label: (
+        <Link to='/confirmation'>
+          {isHeaderMobile ? 'Presença' : 'Confirmação de Presença'}
+        </Link>
+      ),
+      icon: <Icons.AiOutlineCalendar />,
+      key: '/confirmation',
+    },
+  ]
 
   const onClick: MenuProps['onClick'] = (e) => setCurrent(e.key)
 
   useEffect(() => {
-    setCurrent(location.pathname)
-  }, [location])
+    setCurrent(pathname)
+  }, [pathname])
 
   return (
     <>
@@ -52,7 +61,7 @@ export function Header() {
             <Logo src={logo} alt='logo' />
           </Link>
 
-          {width && width > 999 && (
+          {!isHeaderMobile && (
             <>
               <Menu
                 onClick={onClick}
@@ -67,13 +76,14 @@ export function Header() {
         </Content>
       </Container>
 
-      {width && width < 999 && (
+      {isHeaderMobile && (
         <ContainerMenuMobile>
           <Menu
             onClick={onClick}
             selectedKeys={[current]}
             mode='horizontal'
             items={items}
+            inlineCollapsed
           />
 
           <Cart />
