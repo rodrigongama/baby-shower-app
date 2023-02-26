@@ -3,7 +3,7 @@ import { AiOutlinePlusCircle } from 'react-icons/ai'
 import { BiTrash } from 'react-icons/bi'
 import { MdOutlineContentCopy } from 'react-icons/md'
 import { FooterCheckout, TotalPrice } from '../../../components'
-import PIX from 'react-qrcode-pix'
+import { createStaticPix, hasError } from 'pix-utils'
 
 import { useCart, useNotification } from '../../../contexts'
 import { formatPrice } from '../../../utils'
@@ -11,8 +11,6 @@ import { pix } from '../../../assets'
 
 import { Price, Title } from '../../molecules/ShoppingCard/style'
 import * as Styles from './style'
-
-const now = new Date().getTime().toString()
 
 export function ModalCheckout() {
   const {
@@ -40,8 +38,24 @@ export function ModalCheckout() {
     openMessage('success', 'Código copiado com sucesso')
   }
 
+  function generatePixCode(transactionAmount: number) {
+    const pix = createStaticPix({
+      merchantName: 'Thamires Gama',
+      merchantCity: 'Rio de Janeiro',
+      pixKey: '86b81071-df99-451c-9631-cb1b297a0b37',
+      infoAdicional: 'Chá do Nathan',
+      transactionAmount,
+    })
+
+    if (!hasError(pix)) {
+      const brCode = pix.toBRCode()
+      setFullPIX(brCode)
+    }
+  }
+
   function handleSubmitCart() {
     if (step === 1) {
+      generatePixCode(totalPrice)
       setStep(2)
       return
     }
@@ -71,6 +85,7 @@ export function ModalCheckout() {
         width={450}
         footer={[
           <FooterCheckout
+            key='footer'
             step={step}
             isCartEmpty={isCartEmpty}
             handleCancel={handlResetCheckout}
@@ -120,7 +135,7 @@ export function ModalCheckout() {
           </>
         )}
 
-        {step === 2 && (
+        {step === 2 && fullPIX && (
           <>
             <Styles.PixContainer>
               <Styles.PixTitle>Pague com</Styles.PixTitle>
@@ -131,20 +146,10 @@ export function ModalCheckout() {
               </Styles.PixSubtitle>
 
               <Styles.PixContent>
-                <PIX
-                  amount={totalPrice}
-                  pixkey='86b81071-df99-451c-9631-cb1b297a0b37'
-                  merchant='Thamires Gama'
-                  city='Rio de Janeiro'
-                  cep='22780-070'
-                  code={'RQP' + now}
-                  onLoad={setFullPIX}
-                  resize={250}
-                  variant='fluid'
-                  padding={30}
+                <Styles.StyledQRCode
                   color='#ac897e'
-                  bgRounded
-                  divider
+                  icon='/favicon.ico'
+                  value={fullPIX}
                 />
 
                 <Styles.Instruction>

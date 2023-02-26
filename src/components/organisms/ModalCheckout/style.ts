@@ -1,4 +1,4 @@
-import { Modal as BaseModal } from 'antd'
+import { Modal as BaseModal, QRCode } from 'antd'
 import { AiOutlineMinusCircle } from 'react-icons/ai'
 import styled, { css } from 'styled-components'
 
@@ -112,6 +112,11 @@ export const PixContent = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 40px;
+`
+
+export const StyledQRCode = styled(QRCode)`
+  background: none;
+  border: none;
 `
 
 export const Instruction = styled.p`
