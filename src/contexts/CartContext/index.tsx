@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import { useNotification } from '../../contexts/NotificationContext'
 import { GiftList } from '../../contexts/GiftListContext/types'
 import { CartContextData, CartItem, CartProviderProps } from './types'
@@ -8,7 +8,10 @@ const CartContext = createContext({} as CartContextData)
 export function CartProvider({ children }: CartProviderProps) {
   const { openNotification } = useNotification()
 
-  const [shoppingCart, setShoppingCart] = useState<CartItem[]>([])
+  const [shoppingCart, setShoppingCart] = useState<CartItem[]>(() => {
+    const storedCart = localStorage.getItem('shopping-cart')
+    return storedCart ? JSON.parse(storedCart) : []
+  })
   const [isCheckoutModal, setIsCheckoutModal] = useState(false)
 
   const handleOpenCheckoutModal = () => setIsCheckoutModal(true)
@@ -41,6 +44,10 @@ export function CartProvider({ children }: CartProviderProps) {
   function removeItemOnCart(id: string) {
     setShoppingCart((prevState) => prevState.filter((item) => item.id !== id))
   }
+
+  useEffect(() => {
+    localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart))
+  }, [shoppingCart])
 
   return (
     <CartContext.Provider
