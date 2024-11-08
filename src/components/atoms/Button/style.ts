@@ -1,9 +1,9 @@
-import styled, { css } from 'styled-components'
-import { Button } from 'antd'
-import { ButtonProps } from './types'
+import styled, { css } from "styled-components";
+import { Button } from "antd";
+import { ButtonProps } from "./types";
 
 export const BaseButton = styled(Button)<ButtonProps>`
-  font: normal normal 400 1.3rem 'Open Sans';
+  font: normal normal 400 1.3rem "Open Sans";
   letter-spacing: 1px;
   text-transform: uppercase;
   width: 100%;
@@ -29,7 +29,7 @@ export const BaseButton = styled(Button)<ButtonProps>`
     border-radius: 16px;
 
     svg {
-      color: #e88d5d;
+      color: ${({ theme }) => theme.colorPrimary};
     }
   }
 
@@ -60,4 +60,4 @@ export const BaseButton = styled(Button)<ButtonProps>`
         background-color: #00d9cc !important;
       }
     `}
-`
+`;

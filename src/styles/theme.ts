@@ -1,9 +1,9 @@
 const theme = {
-  colorPrimary: '#E88D5D',
-  colorSecondary: '#AC897E',
-  colorTerciary: '#FFF3E2',
-  colorLightSecondary: '#FFCBAB',
-  headerHeight: '70px',
-}
+  colorPrimary: "#F59A97",
+  colorSecondary: "#AC897E",
+  colorTerciary: "#FFD7D6",
+  colorLightSecondary: "#FFCBAB",
+  headerHeight: "70px",
+};
 
-export default theme
+export default theme;

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Container = styled.div`
   height: 55px;
@@ -9,10 +9,10 @@ export const Container = styled.div`
     left: 50%;
     transform: translateX(-50%);
   }
-`
+`;
 
 export const CartContainer = styled.div`
-  background: ${({ theme }) => theme.colorLightSecondary};
+  background: #fff;
   border-radius: 100%;
   cursor: pointer;
   display: flex;
@@ -20,4 +20,4 @@ export const CartContainer = styled.div`
   align-items: center;
   height: 48px;
   width: 48px;
-`
+`;

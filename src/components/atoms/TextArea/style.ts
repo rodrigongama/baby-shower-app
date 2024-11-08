@@ -1,5 +1,5 @@
-import { Input as BaseInput } from 'antd'
-import styled from 'styled-components'
+import { Input as BaseInput } from "antd";
+import styled from "styled-components";
 
 export const StyledTextArea = styled(BaseInput.TextArea)`
   border: none;
@@ -12,7 +12,7 @@ export const StyledTextArea = styled(BaseInput.TextArea)`
   }
 
   textarea {
-    border: 1px solid #e88d5d;
+    border: 1px solid ${({ theme }) => theme.colorPrimary};
     border-radius: 16px;
     padding: 15px;
     resize: none;
@@ -20,7 +20,7 @@ export const StyledTextArea = styled(BaseInput.TextArea)`
 
     &::placeholder {
       color: #828282;
-      font: normal normal 400 1.4rem 'Open Sans';
+      font: normal normal 400 1.4rem "Open Sans";
     }
   }
-`
+`;
