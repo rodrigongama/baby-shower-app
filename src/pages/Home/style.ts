@@ -16,9 +16,11 @@ export const WelcomeContainer = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  img {
-    height: 100%;
-    width: 100%;
+  @media (max-width: 768px) {
+    img {
+      height: 100%;
+      width: 100%;
+    }
   }
 `;
 

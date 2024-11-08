@@ -1,16 +1,16 @@
-import { useState } from 'react'
-import { AiOutlinePlusCircle } from 'react-icons/ai'
-import { BiTrash } from 'react-icons/bi'
-import { MdOutlineContentCopy } from 'react-icons/md'
-import { FooterCheckout, TotalPrice } from '../../../components'
-import { createStaticPix, hasError } from 'pix-utils'
+import { useState } from "react";
+import { AiOutlinePlusCircle } from "react-icons/ai";
+import { BiTrash } from "react-icons/bi";
+import { MdOutlineContentCopy } from "react-icons/md";
+import { FooterCheckout, TotalPrice } from "../../../components";
+import { createStaticPix, hasError } from "pix-utils";
 
-import { useCart, useNotification } from '../../../contexts'
-import { formatPrice } from '../../../utils'
-import { pix } from '../../../assets'
+import { useCart, useNotification } from "../../../contexts";
+import { formatPrice } from "../../../utils";
+import { pix } from "../../../assets";
 
-import { Price, Title } from '../../molecules/ShoppingCard/style'
-import * as Styles from './style'
+import { Price, Title } from "../../molecules/ShoppingCard/style";
+import * as Styles from "./style";
 
 export function ModalCheckout() {
   const {
@@ -20,57 +20,57 @@ export function ModalCheckout() {
     isCheckoutModal,
     handleCloseCheckoutModal,
     removeItemOnCart,
-  } = useCart()
+  } = useCart();
   const { contextMessage, openMessage, contextNotification, openNotification } =
-    useNotification()
+    useNotification();
 
-  const [step, setStep] = useState(1)
-  const [fullPIX, setFullPIX] = useState('')
+  const [step, setStep] = useState(1);
+  const [fullPIX, setFullPIX] = useState("");
 
-  const isCartEmpty = shoppingCart.length === 0
+  const isCartEmpty = shoppingCart.length === 0;
   const totalPrice = shoppingCart.reduce(
     (acc, { price, quantity }) => acc + price * quantity,
-    0,
-  )
+    0
+  );
 
   function handleCopyPixCode(pix: string) {
-    navigator.clipboard.writeText(pix)
-    openMessage('success', 'Código copiado com sucesso')
+    navigator.clipboard.writeText(pix);
+    openMessage("success", "Código copiado com sucesso");
   }
 
   function generatePixCode(transactionAmount: number) {
     const pix = createStaticPix({
-      merchantName: 'Thamires Gama',
-      merchantCity: 'Rio de Janeiro',
-      pixKey: '86b81071-df99-451c-9631-cb1b297a0b37',
-      infoAdicional: 'Chá da Susana',
+      merchantName: "Thamires Gama",
+      merchantCity: "Rio de Janeiro",
+      pixKey: import.meta.env.VITE_PIX_KEY,
+      infoAdicional: "Chá da Susana",
       transactionAmount,
-    })
+    });
 
     if (!hasError(pix)) {
-      const brCode = pix.toBRCode()
-      setFullPIX(brCode)
+      const brCode = pix.toBRCode();
+      setFullPIX(brCode);
     }
   }
 
   function handleSubmitCart() {
     if (step === 1) {
-      generatePixCode(totalPrice)
-      setStep(2)
-      return
+      generatePixCode(totalPrice);
+      setStep(2);
+      return;
     }
 
-    handlResetCheckout()
+    handlResetCheckout();
     openNotification(
-      'Compra efetuada com sucesso',
-      'Muito obrigado pelo presente!',
-    )
+      "Compra efetuada com sucesso",
+      "Muito obrigado pelo presente!"
+    );
   }
 
   function handlResetCheckout() {
-    if (step === 2) setShoppingCart([])
-    handleCloseCheckoutModal()
-    setStep(1)
+    if (step === 2) setShoppingCart([]);
+    handleCloseCheckoutModal();
+    setStep(1);
   }
 
   return (
@@ -79,13 +79,13 @@ export function ModalCheckout() {
       {contextNotification}
 
       <Styles.Modal
-        title='Meu carrinho'
+        title="Meu carrinho"
         open={isCheckoutModal}
         onCancel={handlResetCheckout}
         width={450}
         footer={[
           <FooterCheckout
-            key='footer'
+            key="footer"
             step={step}
             isCartEmpty={isCartEmpty}
             handleCancel={handlResetCheckout}
@@ -124,7 +124,7 @@ export function ModalCheckout() {
                 </Styles.Description>
 
                 <BiTrash
-                  color='#EFA389'
+                  color="#EFA389"
                   size={20}
                   onClick={() => removeItemOnCart(item.id)}
                 />
@@ -141,14 +141,14 @@ export function ModalCheckout() {
               <Styles.PixTitle>Pague com</Styles.PixTitle>
 
               <Styles.PixSubtitle>
-                <img src={pix} alt='Logo PIX' />
+                <img src={pix} alt="Logo PIX" />
                 <span>PIX</span>
               </Styles.PixSubtitle>
 
               <Styles.PixContent>
                 <Styles.StyledQRCode
-                  color='#ac897e'
-                  icon='/favicon.ico'
+                  color="#ac897e"
+                  icon="/favicon.ico"
                   value={fullPIX}
                 />
 
@@ -173,5 +173,5 @@ export function ModalCheckout() {
         )}
       </Styles.Modal>
     </>
-  )
+  );
 }
