@@ -1,22 +1,31 @@
-import moment from 'moment'
-import { DisplayTime } from '../..'
-import { Container } from './style'
+import moment from "moment";
+import { DisplayTime } from "../..";
+import { Container } from "./style";
 
-const INITIAL_DATE = moment('08/25/2022')
-const BIRTH_DATE = '01/06/2023'
+const DPP = moment("03/01/2025");
+const today = moment();
+const diffWeeks = DPP.diff(today, "week");
+const diffDays = DPP.diff(today, "days");
 
 export function Time() {
-  const today = moment()
-  const diffWeeks = moment.duration(today.diff(INITIAL_DATE)).asWeeks()
+  function getTimeToBorn() {
+    if (diffDays === 0) return "Ela nasceu!";
+
+    if (diffWeeks === 0) {
+      return `${diffDays} ${diffDays === 1 ? "dia" : "dias"}`;
+    }
+
+    return `${diffWeeks} ${diffWeeks === 1 ? "semana" : "semanas"}`;
+  }
 
   return (
     <Container>
-      <DisplayTime
-        title='Semana de gestação'
-        time={`${Math.floor(diffWeeks)} semanas`}
-      />
+      <DisplayTime title="Tempo para o nascimento" time={getTimeToBorn()} />
 
-      <DisplayTime title='Previsão de nascimento' time={BIRTH_DATE} />
+      <DisplayTime
+        title="Previsão de nascimento"
+        time={DPP.format("DD/MM/YYYY")}
+      />
     </Container>
-  )
+  );
 }

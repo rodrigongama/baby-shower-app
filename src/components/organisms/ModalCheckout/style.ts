@@ -1,10 +1,10 @@
-import { Modal as BaseModal, QRCode } from 'antd'
-import { AiOutlineMinusCircle } from 'react-icons/ai'
-import styled, { css } from 'styled-components'
+import { Modal as BaseModal, QRCode } from "antd";
+import { AiOutlineMinusCircle } from "react-icons/ai";
+import styled, { css } from "styled-components";
 
 type MinusIconComponent = {
-  disabled: boolean
-}
+  disabled: boolean;
+};
 
 export const Modal = styled(BaseModal)`
   .ant-modal-content {
@@ -16,14 +16,14 @@ export const Modal = styled(BaseModal)`
     padding: 24px;
 
     .ant-modal-title {
-      color: #fff3e2;
-      font: normal normal 700 1.8rem 'Open Sans';
+      color: ${({ theme }) => theme.colorTerciary});
+      font: normal normal 700 1.8rem "Open Sans";
       letter-spacing: 1px;
     }
   }
 
   .ant-modal-close-x svg {
-    color: #fff3e2;
+    color: ${({ theme }) => theme.colorTerciary});
   }
 
   .ant-modal-body,
@@ -34,7 +34,7 @@ export const Modal = styled(BaseModal)`
   svg {
     cursor: pointer;
   }
-`
+`;
 
 export const CartItem = styled.div`
   display: flex;
@@ -44,7 +44,7 @@ export const CartItem = styled.div`
   img {
     width: 100px;
   }
-`
+`;
 
 export const Description = styled.div`
   display: flex;
@@ -52,7 +52,7 @@ export const Description = styled.div`
   flex: 1;
   max-width: 60%;
   padding: 0 5px;
-`
+`;
 
 export const Quantity = styled.div`
   display: flex;
@@ -68,7 +68,7 @@ export const Quantity = styled.div`
   svg {
     color: #ac897e;
   }
-`
+`;
 
 export const MinusIcon = styled(AiOutlineMinusCircle)<MinusIconComponent>`
   ${({ disabled }) =>
@@ -77,20 +77,20 @@ export const MinusIcon = styled(AiOutlineMinusCircle)<MinusIconComponent>`
       color: #ddd !important;
       cursor: not-allowed !important;
     `}
-`
+`;
 
 export const PixContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`
+`;
 
 export const PixTitle = styled.p`
   color: #ac897e;
-  font: normal normal 800 2rem 'Open Sans';
+  font: normal normal 800 2rem "Open Sans";
   text-transform: uppercase;
-`
+`;
 
 export const PixSubtitle = styled.p`
   display: flex;
@@ -102,9 +102,9 @@ export const PixSubtitle = styled.p`
   }
 
   span {
-    font: normal normal 400 2.8rem 'Open Sans';
+    font: normal normal 400 2.8rem "Open Sans";
   }
-`
+`;
 
 export const PixContent = styled.div`
   display: flex;
@@ -112,19 +112,19 @@ export const PixContent = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 40px;
-`
+`;
 
 export const StyledQRCode = styled(QRCode)`
   background: none;
   border: none;
-`
+`;
 
 export const Instruction = styled.p`
-  font: normal normal 400 1.5rem 'Open Sans';
+  font: normal normal 400 1.5rem "Open Sans";
   margin: 15px 0;
   text-align: center;
   text-transform: uppercase;
-`
+`;
 
 export const PixCode = styled.div`
   display: flex;
@@ -134,4 +134,4 @@ export const PixCode = styled.div`
   span {
     margin-right: 5px;
   }
-`
+`;

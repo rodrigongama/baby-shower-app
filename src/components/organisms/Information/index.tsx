@@ -10,17 +10,17 @@ export function Information() {
         <Styles.Title>Informações do chá de bebê</Styles.Title>
 
         <Styles.TimeDisplay>
-          <p>Março</p>
+          <p>Dezembro</p>
 
           <Styles.TimeContainer>
             <Styles.TimeContent>Sábado</Styles.TimeContent>
 
-            <span>18</span>
+            <span>7</span>
 
             <Styles.TimeContent>às 15h</Styles.TimeContent>
           </Styles.TimeContainer>
 
-          <p>2023</p>
+          <p>2024</p>
         </Styles.TimeDisplay>
       </Styles.DateContainer>
 

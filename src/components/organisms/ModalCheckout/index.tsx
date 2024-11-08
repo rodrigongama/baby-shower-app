@@ -43,7 +43,7 @@ export function ModalCheckout() {
       merchantName: 'Thamires Gama',
       merchantCity: 'Rio de Janeiro',
       pixKey: '86b81071-df99-451c-9631-cb1b297a0b37',
-      infoAdicional: 'Chá do Nathan',
+      infoAdicional: 'Chá da Susana',
       transactionAmount,
     })
 
