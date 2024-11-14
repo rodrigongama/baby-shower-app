@@ -42,7 +42,7 @@ export function ModalCheckout() {
     const pix = createStaticPix({
       merchantName: "Thamires Gama",
       merchantCity: "Rio de Janeiro",
-      pixKey: import.meta.env.VITE_PIX_KEY,
+      pixKey: import.meta.env.VITE_PIX_CODE,
       infoAdicional: "Chá da Susana",
       transactionAmount,
     });
